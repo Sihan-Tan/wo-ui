@@ -1,0 +1,80 @@
+@font-face {
+  font-family: "iconfont";
+  src: url('./icon/'); /* IE9 */
+  src: url('./icon/#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAQwAAsAAAAACFwAAAPiAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCCcAqEZIQmATYCJAMICwYABCAFhG0HMRtNB8gepan1QF5ekSyMQ8mNws32clcIUvW8WVVe1FOaUIpOSPviIvDwtnvn/lCqmdQE+WYTNYUShCgIWtSSIgECXP7nmOnSCyQ/0ECmmFU22hvgeEADiyiMFA2QA/N7gGeYUCMOIFK7gQD0YlRGxrqNW4PHyCACIIfFLILvabAleIKXa2ZmBsgFL3w1ijsLYEL5e/IjKR7geGVIUfOtTj6qfzGaRAd6BuqcI8DdnwmANQ+ggMoABmSetTRF60hllD6IMCXhvPIJPI/xeHLO2f7jAQRIDZEYERvFuU/clHdXJVz+OQPwgGMAGbYqBviuTJlyRm9ZS7x+ve2gG+1mBE8Lunq19bVrbW7caDcMTR80Y0xwj+Xjrz9v28oMw7RZGDh1BeLsNStQT9lgWrZqpskA4+zQGSqaxghIe2+JeIR/0W6QK2jqzFmmuPWjrxvnhEzXUIfR0wk9dOo0cHfY6NUtbs2YVRXnyqDlqyPoHDP0rOw4euX4HKvGrAml02f/TNnNfv2kewo7bm9TY6m5Y3HTnDarYYqNr19vyITMZOL6MC3rm2XVMhQYSrau3mUnCpo9v3/vDjnC5IQjsK8H2tWY7nv4qo+2Z+uGGS2XoGte8eDBChRSZuKb0LUsa5IxswGbuqJ9ze6HYE9HKDtiOMY0WnbM1f1g+1q3tjXsdLpBavNFXejyu3eWseXszh04FzqXpY3Sdzfus/ay+KR1+1p5h13cMY0uyl1rYqu2NbrshS0OwXMQ3sIA+tq7HWxXbcbiiZeDh1maNf5ctl+lfuemDiVr2OPHdDW6l+VNMqYGNeixkPOYm5Ha+qnIh5LiDvsk+9RHURSu5pt0HbL65F72r+/X1m+sEcYJ9wljmCI/qg4APJvzaRr4B/gbZP06vptvzrfWwAAANw91OFK6PJsD69kA/m2yEvi6uWvWsJAvWi587myCcwz82yjSqx/wQBwB7m9rC4bWRPA2F4GjFQ0UrzSSYSuDF4MU0OBVA71K6s03CKSgSOgAVDQMgPCzATg+DgDl5xySYe+BlxDvQMMvCnptU+CKBmWz6GspkqhK+UJeL8FicjrkRK/qq/yWkrnIJipdfklqKylui19IjEsYxutJDknZxxh3sTlJVWVBVpx2oS7sJ9lsTsGlOAslkxpXoKqurPh4ee5GcSanHXq1KCQilSSfIE8vAgsTJwc5b6zSj77fksSsiI1IWVI1oG9LonCztC5IFCdhDWQ9iWOtqufS3q2YWRKVSuZ+MoWTnaAumiQ2jTgJXPPdCklMVHEKtgi5ZImnevK6krjjy+yvbhOAnii5pB0ptLtoMReJDgAAAA==') format('woff2'),
+  url('./icon/iconfont.woff?t=1553676483990') format('woff'),
+  url('./icon/iconfont.ttf?t=1553676483990') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('./icon/iconfont.svg?t=1553676483990#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-kaiguan:before {
+  content: "\e61e";
+}
+
+main {
+  position: relative;
+  max-height: 50vh;
+  overflow: hidden;
+
+  .local {
+    color: #999;
+    position: relative;
+    height: 42px;
+    padding: 10px 0;
+    box-sizing: border-box;
+    line-height: 22px;
+    font-size: 16px;
+    margin: 0;
+  
+    &:before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: 0;
+      border: 6px solid #cccccc;
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    span{
+        margin-left: 20px;
+    }
+  
+    .icon-kaiguan {
+      font-size: 22px;
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  img{
+      display: block;
+      width: 100%;
+      margin: 20px auto;
+      filter: grayscale(1);
+  }
+
+  &.active{
+    .local:before{
+      border-color: #09f;
+    }
+    .icon-kaiguan {
+      color: #09f;
+    }
+    img{
+      filter: grayscale(0);
+    }
+  }
+}
+
