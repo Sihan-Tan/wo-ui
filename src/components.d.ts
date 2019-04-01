@@ -102,35 +102,6 @@ export namespace Components {
     'onGetMode'?: (event: CustomEvent) => void;
   }
 
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first': string;
-    /**
-    * The last name
-    */
-    'last': string;
-    /**
-    * The middle name
-    */
-    'middle': string;
-  }
-  interface MyComponentAttributes extends StencilHTMLAttributes {
-    /**
-    * The first name
-    */
-    'first'?: string;
-    /**
-    * The last name
-    */
-    'last'?: string;
-    /**
-    * The middle name
-    */
-    'middle'?: string;
-  }
-
   interface WoProgress {
     'calculateValue': (left: any) => void;
     'clickMode': (e: any) => void;
@@ -153,6 +124,37 @@ export namespace Components {
     'onGetValue'?: (event: CustomEvent) => void;
     'percent'?: boolean;
     'value'?: number;
+  }
+
+  interface WoSwitch {
+    'label': string;
+    /**
+    * 说明文字颜色
+    */
+    'labelColor': string;
+    /**
+    * 说明文字大小
+    */
+    'labelSize': number;
+    /**
+    * 设置当前的模式
+    */
+    'setMode': () => void;
+  }
+  interface WoSwitchAttributes extends StencilHTMLAttributes {
+    'label'?: string;
+    /**
+    * 说明文字颜色
+    */
+    'labelColor'?: string;
+    /**
+    * 说明文字大小
+    */
+    'labelSize'?: number;
+    /**
+    * 对外提供当前模式数据
+    */
+    'onGetMode'?: (event: CustomEvent) => void;
   }
 
   interface WoMain {
@@ -197,16 +199,16 @@ declare global {
   interface StencilElementInterfaces {
     'WoColorChoose': Components.WoColorChoose;
     'WoMode': Components.WoMode;
-    'MyComponent': Components.MyComponent;
     'WoProgress': Components.WoProgress;
+    'WoSwitch': Components.WoSwitch;
     'WoMain': Components.WoMain;
   }
 
   interface StencilIntrinsicElements {
     'wo-color-choose': Components.WoColorChooseAttributes;
     'wo-mode': Components.WoModeAttributes;
-    'my-component': Components.MyComponentAttributes;
     'wo-progress': Components.WoProgressAttributes;
+    'wo-switch': Components.WoSwitchAttributes;
     'wo-main': Components.WoMainAttributes;
   }
 
@@ -223,16 +225,16 @@ declare global {
     new (): HTMLWoModeElement;
   };
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
-  };
-
   interface HTMLWoProgressElement extends Components.WoProgress, HTMLStencilElement {}
   var HTMLWoProgressElement: {
     prototype: HTMLWoProgressElement;
     new (): HTMLWoProgressElement;
+  };
+
+  interface HTMLWoSwitchElement extends Components.WoSwitch, HTMLStencilElement {}
+  var HTMLWoSwitchElement: {
+    prototype: HTMLWoSwitchElement;
+    new (): HTMLWoSwitchElement;
   };
 
   interface HTMLWoMainElement extends Components.WoMain, HTMLStencilElement {}
@@ -244,16 +246,16 @@ declare global {
   interface HTMLElementTagNameMap {
     'wo-color-choose': HTMLWoColorChooseElement
     'wo-mode': HTMLWoModeElement
-    'my-component': HTMLMyComponentElement
     'wo-progress': HTMLWoProgressElement
+    'wo-switch': HTMLWoSwitchElement
     'wo-main': HTMLWoMainElement
   }
 
   interface ElementTagNameMap {
     'wo-color-choose': HTMLWoColorChooseElement;
     'wo-mode': HTMLWoModeElement;
-    'my-component': HTMLMyComponentElement;
     'wo-progress': HTMLWoProgressElement;
+    'wo-switch': HTMLWoSwitchElement;
     'wo-main': HTMLWoMainElement;
   }
 

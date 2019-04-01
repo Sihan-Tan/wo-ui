@@ -102,9 +102,6 @@ export class ModeControl {
    * 数据校验
    */
   componentWillLoad() {
-    if (this.modeArr.length > 4) {
-      throw `'modeArr' 属性的长度不能超过4`;
-    }
     let count = 0;
     this.modeArr.forEach(item => {
       count = item.selected ? count + 1 : count;
@@ -120,7 +117,7 @@ export class ModeControl {
        <span class="label" style={{ fontSize: this.labelSize + "px", color: this.labelColor }}>
           {this.label}
         </span>
-        <span class="item">
+        <p class="item">
           {this.modeArr.map((item, index) => {
             if (item.selected) {
               return (<span
@@ -139,7 +136,7 @@ export class ModeControl {
               </span>)
             }
           })}
-        </span>
+        </p>
       </div>
     );
   }

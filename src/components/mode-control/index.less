@@ -24,17 +24,27 @@
 
     .item {
         flex: 5;
-        display: flex;
-        justify-content: space-around;
+        margin: 0;
         line-height: 18px;
+        display: flex;
+        align-items: center;
+        overflow-y: hidden;
+        flex-wrap: nowrap;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
         .mode-item{
+            float: left;
             max-width: 60px;
             background-color: var(--color-grey--white);
             padding: 3px 12px;
             border-radius: 15px;
             color: var(--color-white);
             font-size: 12px;
+            margin: 0 8px;
+            white-space: nowrap;
 
             &.active {
                 background-color: var(--color-blue);

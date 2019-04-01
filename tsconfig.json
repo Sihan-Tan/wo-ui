@@ -23,7 +23,7 @@
   "exclude": [
     "node_modules"
   ],
-  "mocha": {
+  "jest": {
     "transform": {
       "^.+\\.(ts|tsx)$":
         "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"

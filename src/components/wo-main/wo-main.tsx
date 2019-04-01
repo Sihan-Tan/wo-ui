@@ -52,10 +52,10 @@ export class WoMain {
 
   render() {
     return (
-        <main class={this.isOpen?'active':''}  onClick={()=>this.showOpenHandler()}>
+        <main class={this.isOpen?'active':''}>
             <h1 class="local">
               <span>{this.location}</span>
-              <i class="iconfont icon-kaiguan"></i>
+              <i class="iconfont icon-kaiguan" onClick={()=>this.showOpenHandler()}></i>
             </h1>
             <img src={this.imageUrl}> </img>
         </main>

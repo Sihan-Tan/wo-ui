@@ -19,7 +19,7 @@ Stencil components are just Web Components, so they work in any major framework 
 To start building a new web component using Stencil, clone this repo to a new directory:
 
 ```bash
-git clone https://github.com/ionic-team/stencil-component-starter.git my-component
+git clone git@github.com:Orialian/wo-ui.git my-component
 cd my-component
 git remote rm origin
 ```
