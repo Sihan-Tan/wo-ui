@@ -24,10 +24,10 @@ export class WoMain {
    *获取设备开关状态
    */
   @Event()
-  getOpen: EventEmitter
+  change: EventEmitter
   showOpenHandler(){
     this.changeState()
-    this.getOpen.emit({
+    this.change.emit({
       isOpen : this.isOpen
     })
   }
@@ -54,8 +54,8 @@ export class WoMain {
     return (
         <main class={this.isOpen?'active':''}>
             <h1 class="local">
-              <span>{this.location}</span>
-              <i class="iconfont icon-kaiguan" onClick={()=>this.showOpenHandler()}></i>
+              <span class="location">{this.location}</span>
+              <div class="shutdown" onClick={()=>this.showOpenHandler()}></div>
             </h1>
             <img src={this.imageUrl}> </img>
         </main>

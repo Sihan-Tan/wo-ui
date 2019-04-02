@@ -5,7 +5,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
   <title>Stencil Component Starter</title>
-  <link rel="stylesheet" href="/assets/icons/iconfont.css">
   <link rel="stylesheet" href="/build/wowo.css">
   <script src="/build/wowo.js"></script>
 </head>
@@ -14,13 +13,23 @@
   <wo-main location="客厅" is-open="false"
     image-url="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2735633715,2749454924&fm=27&gp=0.jpg">
   </wo-main>
-  <div class="control">
-    <span class="line"></span>
-    <wo-mode label="工作模式"></wo-mode>
-    <wo-progress label="亮度调节" max="100" min="12" percent="false" value="15"></wo-progress>
-    <wo-color-choose label="颜色选择" size="large"></wo-color-choose>
-    <wo-switch label="开启静音"></wo-switch>
-  </div>
+  <wo-cell-group>
+    <wo-cell label="工作模式" is-scroll>
+        <wo-mode></wo-mode>
+    </wo-cell>
+    <wo-cell label="亮度调节">
+        <wo-progress max="100" min="12" percent="false" value="15"></wo-progress>
+    </wo-cell>
+    <wo-cell label="颜色选择" is-scroll="true">
+        <wo-color-choose size="10px"></wo-color-choose>
+    </wo-cell>
+    <wo-cell label="开关">
+        <wo-switch size="14px" active-color="green" inactive-color="red" disabled></wo-switch>
+    </wo-cell>
+    <wo-cell label="温度">
+      <wo-count value="20"></wo-count>
+    </wo-cell>
+  </wo-cell-group>
 
   <script>
     // 设置属性值
@@ -31,7 +40,7 @@
 
     // 固定主视区
     let mainEle = document.querySelector('wo-main');
-    mainEle.addEventListener('showOpen', e => {
+    mainEle.addEventListener('change', e => {
       console.log(e.detail)
     })
 
@@ -45,6 +54,12 @@
         name: '节能',
         selected: false
       }, {
+        name: '节能',
+        selected: false
+      }, {
+        name: '节能',
+        selected: false
+      }, {
         name: '动力',
         selected: false
       }, {
@@ -52,14 +67,14 @@
         selected: false
       }]
     }, modeEle);
-    modeEle.addEventListener('showMode', e => {
+    modeEle.addEventListener('change', e => {
       console.log(e.detail)
     })
 
     // 进度条
     let progressEle = document.querySelector('wo-progress')
-    progressEle.addEventListener('getValue', e => {
-      console.log(e.detail)
+    progressEle.addEventListener('change', e => {
+      // console.log(e.detail)
     })
 
     // 颜色选择
@@ -83,9 +98,22 @@
         selected: false
       }]
     }, colorEle);
-    colorEle.addEventListener('getColor', e => {
+    colorEle.addEventListener('change', e => {
       console.log(e.detail)
     })
+
+    // 开关
+    let switchEle = document.querySelector('wo-switch');
+    switchEle.addEventListener('change', e=>{
+      console.log(e.detail)
+    })
+
+    // 计数器
+    let countEle = document.querySelector('wo-count');
+    countEle.addEventListener('change', e => {
+      console.log(e.detail)
+    })
+
 
   </script>
 </body>

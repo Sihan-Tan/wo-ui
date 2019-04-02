@@ -1,4 +1,4 @@
-import { Component, Prop, Event, EventEmitter, Method } from "@stencil/core";
+import { Component, Event, EventEmitter, Prop } from "@stencil/core";
 
 @Component({
   tag: "wo-switch",
@@ -7,64 +7,51 @@ import { Component, Prop, Event, EventEmitter, Method } from "@stencil/core";
 })
 export class ModeControl {
   /*
-  * 说明文字描述
-  */
-  @Prop() label: string;
-  /**
-   *说明文字大小
-   *
-   * @type {number}
-   * @memberof ModeControl
+   * 开关状态
    */
-  @Prop() labelSize: number = 16;
-  /**
-   *说明文字颜色
-   *
-   * @type {string}
-   * @memberof ModeControl
+  @Prop({ mutable: true, reflectToAttr: true }) checked: boolean = false;
+
+  /*
+   * 打开时的背景色
    */
-  @Prop() labelColor: string = "#333";
+  @Prop() activeColor: string ;
+
+  /**
+   * 关闭时的背景色
+   */
+  @Prop() inactiveColor: string;
+
+  /**
+   * 开关大小
+   */
+  @Prop() size: string = '16px'
+
+  /**
+   * 是否禁用
+   */
+  @Prop() disabled :boolean = false;
 
   /**
    *对外提供当前模式数据
-   *
-   * @type {EventEmitter}
-   * @memberof ModeControl
    */
   @Event()
-  getMode: EventEmitter;
-  showModeHandler(item) {
-    if (item.selected) return;
-    this.setMode();
-    this.getMode.emit({
+  change: EventEmitter;
+  changeHandler() {
+    if(this.disabled) return ;
+    this.checked = !this.checked;
+    this.change.emit({
+      checked: this.checked
     });
-  }
-
-  /**
-   * 设置当前的模式
-   * @param item 
-   */
-  @Method()
-  setMode() {
-  }
-
-  /**
-   * 数据校验
-   */
-  componentWillLoad() {
   }
 
   render() {
     return (
-      <div class="control-item">
-       <span class="label" style={{ fontSize: this.labelSize + "px", color: this.labelColor }}>
-          {this.label}
-        </span>
-        <div class="item">
-            <div class="switch switch--on">
-                <div class="switch__node"></div>
-            </div>
-        </div>
+      <div
+        class={`wo-switch ${this.checked ? "wo-switch--on" : ""} ${this.disabled?"wo-switch--disabled":''}`}
+        onClick={() => this.changeHandler()}
+        style={{fontSize:this.size, backgroundColor: this.checked?this.activeColor:this.inactiveColor}}
+      >
+        <div class="wo-switch__node" />
       </div>
     );
   }

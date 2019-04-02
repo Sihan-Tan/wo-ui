@@ -1,0 +1,29 @@
+.wo-cell-group {
+    position: relative;
+    overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
+
+    &:before,&:after{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        height: 1px;
+        background-color: var(--color-grey);
+        transform: scaleY(.5);
+    }
+
+    &:after{
+        top: unset;
+        bottom: 0;
+    }
+
+    &.wo-cell-group--no-top:before{
+        height: 0;
+    }
+    &.wo-cell-group--no-bottom:after{
+        height: 0;
+    }
+}

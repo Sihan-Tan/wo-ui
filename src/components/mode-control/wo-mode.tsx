@@ -11,74 +11,42 @@ interface Mode{
   shadow: true
 })
 export class ModeControl {
-  /*
-  * 说明文字描述
-  */
-  @Prop() label: string;
-  /**
-   *说明文字大小
-   *
-   * @type {number}
-   * @memberof ModeControl
-   */
-  @Prop() labelSize: number = 16;
-  /**
-   *说明文字颜色
-   *
-   * @type {string}
-   * @memberof ModeControl
-   */
-  @Prop() labelColor: string = "#333";
+  
   /**
    *选中时的文字颜色
-   *
-   * @type {(string | null)}
-   * @memberof ModeControl
    */
   @Prop() activeColor: string | null;
+
   /**
    *选中时的背景颜色
-   *
-   * @type {(string | null)}
-   * @memberof ModeControl
    */
   @Prop() activeBackground: string | null;
+
   /**
    *未选中时的文字颜色
-   *
-   * @type {(string | null)}
-   * @memberof ModeControl
    */
   @Prop() color: string | null;
+
   /**
    *未选中时的背景颜色
-   *
-   * @type {(string | null)}
-   * @memberof ModeControl
    */
   @Prop() background: string | null;
 
   /**
    *模式数组
-   *
-   * @type {Array<Mode>}
-   * @memberof ModeControl
    */
   @Prop({ mutable: true, reflectToAttr: true })
   modeArr: Array<Mode> = [];
 
   /**
    *对外提供当前模式数据
-   *
-   * @type {EventEmitter}
-   * @memberof ModeControl
    */
   @Event()
-  getMode: EventEmitter;
+  change: EventEmitter;
   showModeHandler(item, index) {
     if (item.selected) return;
     this.setMode(item);
-    this.getMode.emit({
+    this.change.emit({
       current: item,
       index: index,
       all: this.modeArr
@@ -113,22 +81,18 @@ export class ModeControl {
 
   render() {
     return (
-      <div class="control-item">
-       <span class="label" style={{ fontSize: this.labelSize + "px", color: this.labelColor }}>
-          {this.label}
-        </span>
-        <p class="item">
+      <div class="wo-mode">
           {this.modeArr.map((item, index) => {
             if (item.selected) {
               return (<span
-                class='mode-item active'
+                class='wo-mode__item active'
                 style={{'color':this.activeColor, 'background-color': this.activeBackground}}
               >
                 {item.name}
               </span>)
             } else {
               return (<span
-                class='mode-item'
+                class='wo-mode__item'
                 onClick={() => this.showModeHandler(item, index)}
                 style={{'color':this.color, 'background-color': this.background}}
               >
@@ -136,7 +100,6 @@ export class ModeControl {
               </span>)
             }
           })}
-        </p>
       </div>
     );
   }

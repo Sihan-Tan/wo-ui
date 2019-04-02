@@ -12,23 +12,118 @@ import '@stencil/core';
 
 export namespace Components {
 
+  interface WoCellGroup {
+    /**
+    * 是否显示底线
+    */
+    'bottomLine': boolean;
+    /**
+    * 是否显示顶线
+    */
+    'topLine': boolean;
+  }
+  interface WoCellGroupAttributes extends StencilHTMLAttributes {
+    /**
+    * 是否显示底线
+    */
+    'bottomLine'?: boolean;
+    /**
+    * 是否显示顶线
+    */
+    'topLine'?: boolean;
+  }
+
+  interface WoCell {
+    'bottomLine': boolean;
+    'isScroll': boolean;
+    'label': string;
+    /**
+    * 说明文字颜色
+    */
+    'labelColor': string;
+    /**
+    * 说明文字大小
+    */
+    'labelSize': number;
+    /**
+    * 单元格 上/下 线
+    */
+    'topLine': boolean;
+  }
+  interface WoCellAttributes extends StencilHTMLAttributes {
+    'bottomLine'?: boolean;
+    'isScroll'?: boolean;
+    'label'?: string;
+    /**
+    * 说明文字颜色
+    */
+    'labelColor'?: string;
+    /**
+    * 说明文字大小
+    */
+    'labelSize'?: number;
+    /**
+    * 单元格 上/下 线
+    */
+    'topLine'?: boolean;
+  }
+
   interface WoColorChoose {
     'activeColor': string | null;
     'colorArr': Array<any>;
-    'label': string;
-    'labelColor': string;
-    'labelSize': number;
     'setColor': (item: any) => void;
-    'size': string | null;
+    'size': string;
   }
   interface WoColorChooseAttributes extends StencilHTMLAttributes {
     'activeColor'?: string | null;
     'colorArr'?: Array<any>;
-    'label'?: string;
-    'labelColor'?: string;
-    'labelSize'?: number;
-    'onGetColor'?: (event: CustomEvent) => void;
-    'size'?: string | null;
+    'onChange'?: (event: CustomEvent) => void;
+    'size'?: string;
+  }
+
+  interface WoCount {
+    /**
+    * 输入
+    */
+    'changeValue': () => void;
+    /**
+    * 减小
+    */
+    'decreaseValue': () => void;
+    /**
+    * 增大
+    */
+    'increaseValue': () => void;
+    /**
+    * 最大值
+    */
+    'max': number;
+    /**
+    * 最小值
+    */
+    'min': number;
+    /**
+    * 默认值
+    */
+    'value': number;
+  }
+  interface WoCountAttributes extends StencilHTMLAttributes {
+    /**
+    * 最大值
+    */
+    'max'?: number;
+    /**
+    * 最小值
+    */
+    'min'?: number;
+    /**
+    * 对外提供当前模式数据
+    */
+    'onChange'?: (event: CustomEvent) => void;
+    /**
+    * 默认值
+    */
+    'value'?: number;
   }
 
   interface WoMode {
@@ -48,15 +143,6 @@ export namespace Components {
     * 未选中时的文字颜色
     */
     'color': string | null;
-    'label': string;
-    /**
-    * 说明文字颜色
-    */
-    'labelColor': string;
-    /**
-    * 说明文字大小
-    */
-    'labelSize': number;
     /**
     * 模式数组
     */
@@ -83,15 +169,6 @@ export namespace Components {
     * 未选中时的文字颜色
     */
     'color'?: string | null;
-    'label'?: string;
-    /**
-    * 说明文字颜色
-    */
-    'labelColor'?: string;
-    /**
-    * 说明文字大小
-    */
-    'labelSize'?: number;
     /**
     * 模式数组
     */
@@ -99,62 +176,102 @@ export namespace Components {
     /**
     * 对外提供当前模式数据
     */
-    'onGetMode'?: (event: CustomEvent) => void;
+    'onChange'?: (event: CustomEvent) => void;
   }
 
   interface WoProgress {
+    /**
+    * 进度条激活状态颜色
+    */
+    'activeColor': string;
     'calculateValue': (left: any) => void;
     'clickMode': (e: any) => void;
     'getCirclePos': (e: any) => void;
-    'label': string;
-    'labelColor': string;
-    'labelSize': number;
+    /**
+    * 进度条默认状态颜色
+    */
+    'inactiveColor': string;
+    /**
+    * 最大值
+    */
     'max': number;
+    /**
+    * 最小值
+    */
     'min': number;
+    /**
+    * 是否显示百分比
+    */
     'percent': boolean;
     'touchEventEnd': () => void;
+    /**
+    * 传入的值
+    */
     'value': number;
   }
   interface WoProgressAttributes extends StencilHTMLAttributes {
-    'label'?: string;
-    'labelColor'?: string;
-    'labelSize'?: number;
+    /**
+    * 进度条激活状态颜色
+    */
+    'activeColor'?: string;
+    /**
+    * 进度条默认状态颜色
+    */
+    'inactiveColor'?: string;
+    /**
+    * 最大值
+    */
     'max'?: number;
+    /**
+    * 最小值
+    */
     'min'?: number;
-    'onGetValue'?: (event: CustomEvent) => void;
+    'onChange'?: (event: CustomEvent) => void;
+    /**
+    * 是否显示百分比
+    */
     'percent'?: boolean;
+    /**
+    * 传入的值
+    */
     'value'?: number;
   }
 
   interface WoSwitch {
-    'label': string;
+    'activeColor': string;
+    'checked': boolean;
     /**
-    * 说明文字颜色
+    * 是否禁用
     */
-    'labelColor': string;
+    'disabled': boolean;
     /**
-    * 说明文字大小
+    * 关闭时的背景色
     */
-    'labelSize': number;
+    'inactiveColor': string;
     /**
-    * 设置当前的模式
+    * 开关大小
     */
-    'setMode': () => void;
+    'size': string;
   }
   interface WoSwitchAttributes extends StencilHTMLAttributes {
-    'label'?: string;
+    'activeColor'?: string;
+    'checked'?: boolean;
     /**
-    * 说明文字颜色
+    * 是否禁用
     */
-    'labelColor'?: string;
+    'disabled'?: boolean;
     /**
-    * 说明文字大小
+    * 关闭时的背景色
     */
-    'labelSize'?: number;
+    'inactiveColor'?: string;
     /**
     * 对外提供当前模式数据
     */
-    'onGetMode'?: (event: CustomEvent) => void;
+    'onChange'?: (event: CustomEvent) => void;
+    /**
+    * 开关大小
+    */
+    'size'?: string;
   }
 
   interface WoMain {
@@ -191,13 +308,16 @@ export namespace Components {
     /**
     * 获取设备开关状态
     */
-    'onGetOpen'?: (event: CustomEvent) => void;
+    'onChange'?: (event: CustomEvent) => void;
   }
 }
 
 declare global {
   interface StencilElementInterfaces {
+    'WoCellGroup': Components.WoCellGroup;
+    'WoCell': Components.WoCell;
     'WoColorChoose': Components.WoColorChoose;
+    'WoCount': Components.WoCount;
     'WoMode': Components.WoMode;
     'WoProgress': Components.WoProgress;
     'WoSwitch': Components.WoSwitch;
@@ -205,7 +325,10 @@ declare global {
   }
 
   interface StencilIntrinsicElements {
+    'wo-cell-group': Components.WoCellGroupAttributes;
+    'wo-cell': Components.WoCellAttributes;
     'wo-color-choose': Components.WoColorChooseAttributes;
+    'wo-count': Components.WoCountAttributes;
     'wo-mode': Components.WoModeAttributes;
     'wo-progress': Components.WoProgressAttributes;
     'wo-switch': Components.WoSwitchAttributes;
@@ -213,10 +336,28 @@ declare global {
   }
 
 
+  interface HTMLWoCellGroupElement extends Components.WoCellGroup, HTMLStencilElement {}
+  var HTMLWoCellGroupElement: {
+    prototype: HTMLWoCellGroupElement;
+    new (): HTMLWoCellGroupElement;
+  };
+
+  interface HTMLWoCellElement extends Components.WoCell, HTMLStencilElement {}
+  var HTMLWoCellElement: {
+    prototype: HTMLWoCellElement;
+    new (): HTMLWoCellElement;
+  };
+
   interface HTMLWoColorChooseElement extends Components.WoColorChoose, HTMLStencilElement {}
   var HTMLWoColorChooseElement: {
     prototype: HTMLWoColorChooseElement;
     new (): HTMLWoColorChooseElement;
+  };
+
+  interface HTMLWoCountElement extends Components.WoCount, HTMLStencilElement {}
+  var HTMLWoCountElement: {
+    prototype: HTMLWoCountElement;
+    new (): HTMLWoCountElement;
   };
 
   interface HTMLWoModeElement extends Components.WoMode, HTMLStencilElement {}
@@ -244,7 +385,10 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'wo-cell-group': HTMLWoCellGroupElement
+    'wo-cell': HTMLWoCellElement
     'wo-color-choose': HTMLWoColorChooseElement
+    'wo-count': HTMLWoCountElement
     'wo-mode': HTMLWoModeElement
     'wo-progress': HTMLWoProgressElement
     'wo-switch': HTMLWoSwitchElement
@@ -252,7 +396,10 @@ declare global {
   }
 
   interface ElementTagNameMap {
+    'wo-cell-group': HTMLWoCellGroupElement;
+    'wo-cell': HTMLWoCellElement;
     'wo-color-choose': HTMLWoColorChooseElement;
+    'wo-count': HTMLWoCountElement;
     'wo-mode': HTMLWoModeElement;
     'wo-progress': HTMLWoProgressElement;
     'wo-switch': HTMLWoSwitchElement;

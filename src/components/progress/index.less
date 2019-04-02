@@ -1,0 +1,46 @@
+.wo-progress {
+  width: calc(~'(100vw - 30px) * 0.75 - 20px');
+  position: relative;
+
+  .wo-progress--content {
+    margin: 0;
+    position: absolute;
+    height: 4px;
+    left: 10px;
+    right: 0;
+    bottom: -6px;
+    background-color: var(--color-grey);
+    border-radius: 6px;
+    z-index: 3;
+
+    .wo-progress__value {
+      position: absolute;
+      top: -20px;
+      color: var(--color-blue);
+      font-size: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .wo-progress__circle {
+      position: absolute;
+      width: 15px;
+      border-radius: 50%;
+      height: 15px;
+      background-color: var(--color-blue);
+      top: 50%;
+      z-index: 5;
+      transform: translate(-50%, -50%);
+    }
+
+    .wo-progress__mode {
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background-color: var(--color-blue);
+      border-radius: 6px;
+    }
+  }
+}

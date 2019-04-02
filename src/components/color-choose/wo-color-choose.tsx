@@ -3,8 +3,7 @@ import {
   Prop,
   Event,
   EventEmitter,
-  Method,
-  State
+  Method
 } from "@stencil/core";
 
 @Component({
@@ -13,29 +12,18 @@ import {
   shadow: true
 })
 export class ColorControl {
-  @Prop() label: string;
   @Prop() activeColor: string | null = "#09f";
-  @Prop() size: string | null = "normal";
-  @Prop() labelSize: number = 16;
-  @Prop() labelColor: string = "#333";
+  @Prop() size: string = "12px";
 
   @Prop({ mutable: true, reflectToAttr: true })
   colorArr: Array<any> = [];
 
-  @State()
-  width: string = "12px";
-
-  setWidth() {
-    if (this.size === "small") this.width = "10px";
-    if (this.size === "large") this.width = "15px";
-  }
-
   @Event()
-  getColor: EventEmitter;
+  change: EventEmitter;
   showColorHandler(item, index) {
     if (item.selected) return;
     this.setColor(item);
-    this.getColor.emit({
+    this.change.emit({
       current: item,
       index: index,
       all: this.colorArr
@@ -64,47 +52,39 @@ export class ColorControl {
       throw `'colorArr' 的成员最多只能有一个 selected 为 true`;
     }
 
-    this.setWidth();
   }
 
   render() {
     return (
-      <div class="control-item">
-        <span class="label" style={{ fontSize: this.labelSize + "px", color: this.labelColor }}>
-          {this.label}
-        </span>
-        <span class="item">
-          <div class="color-container">
+          <div class="wo-color">
             {this.colorArr.map((item, index) => {
               if (item.selected) {
                 return (
                   <span
-                    class="color-item active"
+                    class="wo-color__item active"
                     style={{
                       "background-color": item.color,
                       "border-color": this.activeColor,
-                      width: this.width,
-                      height: this.width
+                      width: this.size,
+                      height: this.size
                     }}
                   />
                 );
               } else {
                 return (
                   <span
-                    class="color-item"
+                    class="wo-color__item"
                     onClick={() => this.showColorHandler(item, index)}
                     style={{
                       "background-color": item.color,
-                      width: this.width,
-                      height: this.width
+                      width: this.size,
+                      height: this.size
                     }}
                   />
                 );
               }
             })}
           </div>
-        </span>
-      </div>
     );
   }
 }

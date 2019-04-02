@@ -1,60 +1,37 @@
-.control-item {
-    position: relative;
-    width: 100%;
-    display: flex;
-    height: 44px;
-    padding: 10px 0;
-    box-sizing: border-box;
+.wo-switch {
+  display: inline-block;
+  position: relative;
+  width: 2em;
+  height: 1em;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
+  box-sizing: content-box;
+  background-color: #fff;
+  transition: background-color 0.3s;
+  transform: translateY(2px);
+}
 
-    &:after{
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        height: 1px;
-        background-color: var(--color-grey);
-        transform: scaleY(.5);
-    }
+.wo-switch--disabled {
+    opacity: 0.4;
+}
 
-    .label {
-        flex: 2;
-        text-align: center;
-    }
+.wo-switch__node {
+  top: 0;
+  left: 0;
+  position: absolute;
+  border-radius: 100%;
+  width: 1em;
+  height: 1em;
+  z-index: 1;
+  transition: 0.3s;
+  box-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.05), 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+}
 
-    .item {
-        flex: 5;
+.wo-switch--on {
+  background-color: var(--color-blue);
 
-        .switch{
-            display: inline-block;
-            position: relative;
-            width: 2em;
-            height: 1em;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 1em;
-            box-sizing: content-box;
-            background-color: #fff;
-            transition: background-color 0.3s;
-        }
-        .switch__node {
-            top: 0;
-            left: 0;
-            position: absolute;
-            border-radius: 100%;
-            width: 1em;
-            height: 1em;
-            z-index: 1;
-            transition: 0.3s;
-            box-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.05), 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.05);
-            background-color: #fff;
-        }
-
-        .switch--on {
-            background-color: var(--color-blue);
-
-            .switch__node {
-                transform: translateX(1em);
-            }
-        }
-    }
+  .wo-switch__node {
+    transform: translateX(1em);
+  }
 }
