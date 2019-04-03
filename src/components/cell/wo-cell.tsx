@@ -15,7 +15,7 @@ export class Cell {
   /**
    *说明文字大小
    */
-  @Prop() labelSize: number = 16;
+  @Prop() labelSize: string = '14px';
 
   /**
    *说明文字颜色
@@ -42,7 +42,7 @@ export class Cell {
       <div class={`wo-cell ${!this.topLine?'wo-cell--no-top':''} ${!this.bottomLine?'wo-cell--no-bottom':''}`}>
         <span
           class="wo-cell__label"
-          style={{ fontSize: this.labelSize + "px", color: this.labelColor }}
+          style={{ fontSize: this.labelSize, color: this.labelColor }}
         >
           {this.label}
         </span>

@@ -44,7 +44,7 @@ export namespace Components {
     /**
     * 说明文字大小
     */
-    'labelSize': number;
+    'labelSize': string;
     /**
     * 单元格 上/下 线
     */
@@ -61,7 +61,7 @@ export namespace Components {
     /**
     * 说明文字大小
     */
-    'labelSize'?: number;
+    'labelSize'?: string;
     /**
     * 单元格 上/下 线
     */
@@ -274,6 +274,9 @@ export namespace Components {
     'size'?: string;
   }
 
+  interface WoColorPicker {}
+  interface WoColorPickerAttributes extends StencilHTMLAttributes {}
+
   interface WoMain {
     /**
     * 更改设备开关状态
@@ -321,6 +324,7 @@ declare global {
     'WoMode': Components.WoMode;
     'WoProgress': Components.WoProgress;
     'WoSwitch': Components.WoSwitch;
+    'WoColorPicker': Components.WoColorPicker;
     'WoMain': Components.WoMain;
   }
 
@@ -332,6 +336,7 @@ declare global {
     'wo-mode': Components.WoModeAttributes;
     'wo-progress': Components.WoProgressAttributes;
     'wo-switch': Components.WoSwitchAttributes;
+    'wo-color-picker': Components.WoColorPickerAttributes;
     'wo-main': Components.WoMainAttributes;
   }
 
@@ -378,6 +383,12 @@ declare global {
     new (): HTMLWoSwitchElement;
   };
 
+  interface HTMLWoColorPickerElement extends Components.WoColorPicker, HTMLStencilElement {}
+  var HTMLWoColorPickerElement: {
+    prototype: HTMLWoColorPickerElement;
+    new (): HTMLWoColorPickerElement;
+  };
+
   interface HTMLWoMainElement extends Components.WoMain, HTMLStencilElement {}
   var HTMLWoMainElement: {
     prototype: HTMLWoMainElement;
@@ -392,6 +403,7 @@ declare global {
     'wo-mode': HTMLWoModeElement
     'wo-progress': HTMLWoProgressElement
     'wo-switch': HTMLWoSwitchElement
+    'wo-color-picker': HTMLWoColorPickerElement
     'wo-main': HTMLWoMainElement
   }
 
@@ -403,6 +415,7 @@ declare global {
     'wo-mode': HTMLWoModeElement;
     'wo-progress': HTMLWoProgressElement;
     'wo-switch': HTMLWoSwitchElement;
+    'wo-color-picker': HTMLWoColorPickerElement;
     'wo-main': HTMLWoMainElement;
   }
 
