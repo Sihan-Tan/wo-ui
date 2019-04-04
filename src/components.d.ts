@@ -83,9 +83,17 @@ export namespace Components {
 
   interface WoCount {
     /**
+    * 改变底线颜色
+    */
+    'changeColor': () => void;
+    /**
     * 输入
     */
     'changeValue': () => void;
+    /**
+    * 输入框内文字颜色
+    */
+    'color': string;
     /**
     * 减小
     */
@@ -94,6 +102,14 @@ export namespace Components {
     * 增大
     */
     'increaseValue': () => void;
+    /**
+    * 最大输入长度
+    */
+    'length': number;
+    /**
+    * 底线颜色
+    */
+    'lineColor': string;
     /**
     * 最大值
     */
@@ -108,6 +124,18 @@ export namespace Components {
     'value': number;
   }
   interface WoCountAttributes extends StencilHTMLAttributes {
+    /**
+    * 输入框内文字颜色
+    */
+    'color'?: string;
+    /**
+    * 最大输入长度
+    */
+    'length'?: number;
+    /**
+    * 底线颜色
+    */
+    'lineColor'?: string;
     /**
     * 最大值
     */
