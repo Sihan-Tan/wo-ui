@@ -46,8 +46,10 @@ export class Cell {
         >
           {this.label}
         </span>
-        <div class={`wo-cell__value ${this.isScroll?'wo-cell__value--scroll':''}`}>
-          <slot />
+        <div class={`wo-cell__value`}>
+          <div class={`wo-cell__value--content ${this.isScroll?'wo-cell__value--scroll':''}`}>
+            <slot />
+          </div>
         </div>
       </div>
     );

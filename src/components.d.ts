@@ -126,6 +126,43 @@ export namespace Components {
     'value'?: number;
   }
 
+  interface WoMain {
+    /**
+    * 更改设备开关状态
+    */
+    'changeState': () => void;
+    /**
+    * 设备图片路径
+    */
+    'imageUrl': string;
+    /**
+    * 设备开关状态
+    */
+    'isOpen': boolean;
+    /**
+    * 设备所属房间
+    */
+    'location': string;
+  }
+  interface WoMainAttributes extends StencilHTMLAttributes {
+    /**
+    * 设备图片路径
+    */
+    'imageUrl'?: string;
+    /**
+    * 设备开关状态
+    */
+    'isOpen'?: boolean;
+    /**
+    * 设备所属房间
+    */
+    'location'?: string;
+    /**
+    * 获取设备开关状态
+    */
+    'onChange'?: (event: CustomEvent) => void;
+  }
+
   interface WoMode {
     /**
     * 选中时的背景颜色
@@ -186,6 +223,10 @@ export namespace Components {
     'activeColor': string;
     'calculateValue': (left: any) => void;
     'clickMode': (e: any) => void;
+    /**
+    * 字颜色
+    */
+    'color': string;
     'getCirclePos': (e: any) => void;
     /**
     * 进度条默认状态颜色
@@ -214,6 +255,10 @@ export namespace Components {
     * 进度条激活状态颜色
     */
     'activeColor'?: string;
+    /**
+    * 字颜色
+    */
+    'color'?: string;
     /**
     * 进度条默认状态颜色
     */
@@ -273,46 +318,6 @@ export namespace Components {
     */
     'size'?: string;
   }
-
-  interface WoColorPicker {}
-  interface WoColorPickerAttributes extends StencilHTMLAttributes {}
-
-  interface WoMain {
-    /**
-    * 更改设备开关状态
-    */
-    'changeState': () => void;
-    /**
-    * 设备图片路径
-    */
-    'imageUrl': string;
-    /**
-    * 设备开关状态
-    */
-    'isOpen': boolean;
-    /**
-    * 设备所属房间
-    */
-    'location': string;
-  }
-  interface WoMainAttributes extends StencilHTMLAttributes {
-    /**
-    * 设备图片路径
-    */
-    'imageUrl'?: string;
-    /**
-    * 设备开关状态
-    */
-    'isOpen'?: boolean;
-    /**
-    * 设备所属房间
-    */
-    'location'?: string;
-    /**
-    * 获取设备开关状态
-    */
-    'onChange'?: (event: CustomEvent) => void;
-  }
 }
 
 declare global {
@@ -321,11 +326,10 @@ declare global {
     'WoCell': Components.WoCell;
     'WoColorChoose': Components.WoColorChoose;
     'WoCount': Components.WoCount;
+    'WoMain': Components.WoMain;
     'WoMode': Components.WoMode;
     'WoProgress': Components.WoProgress;
     'WoSwitch': Components.WoSwitch;
-    'WoColorPicker': Components.WoColorPicker;
-    'WoMain': Components.WoMain;
   }
 
   interface StencilIntrinsicElements {
@@ -333,11 +337,10 @@ declare global {
     'wo-cell': Components.WoCellAttributes;
     'wo-color-choose': Components.WoColorChooseAttributes;
     'wo-count': Components.WoCountAttributes;
+    'wo-main': Components.WoMainAttributes;
     'wo-mode': Components.WoModeAttributes;
     'wo-progress': Components.WoProgressAttributes;
     'wo-switch': Components.WoSwitchAttributes;
-    'wo-color-picker': Components.WoColorPickerAttributes;
-    'wo-main': Components.WoMainAttributes;
   }
 
 
@@ -365,6 +368,12 @@ declare global {
     new (): HTMLWoCountElement;
   };
 
+  interface HTMLWoMainElement extends Components.WoMain, HTMLStencilElement {}
+  var HTMLWoMainElement: {
+    prototype: HTMLWoMainElement;
+    new (): HTMLWoMainElement;
+  };
+
   interface HTMLWoModeElement extends Components.WoMode, HTMLStencilElement {}
   var HTMLWoModeElement: {
     prototype: HTMLWoModeElement;
@@ -383,28 +392,15 @@ declare global {
     new (): HTMLWoSwitchElement;
   };
 
-  interface HTMLWoColorPickerElement extends Components.WoColorPicker, HTMLStencilElement {}
-  var HTMLWoColorPickerElement: {
-    prototype: HTMLWoColorPickerElement;
-    new (): HTMLWoColorPickerElement;
-  };
-
-  interface HTMLWoMainElement extends Components.WoMain, HTMLStencilElement {}
-  var HTMLWoMainElement: {
-    prototype: HTMLWoMainElement;
-    new (): HTMLWoMainElement;
-  };
-
   interface HTMLElementTagNameMap {
     'wo-cell-group': HTMLWoCellGroupElement
     'wo-cell': HTMLWoCellElement
     'wo-color-choose': HTMLWoColorChooseElement
     'wo-count': HTMLWoCountElement
+    'wo-main': HTMLWoMainElement
     'wo-mode': HTMLWoModeElement
     'wo-progress': HTMLWoProgressElement
     'wo-switch': HTMLWoSwitchElement
-    'wo-color-picker': HTMLWoColorPickerElement
-    'wo-main': HTMLWoMainElement
   }
 
   interface ElementTagNameMap {
@@ -412,11 +408,10 @@ declare global {
     'wo-cell': HTMLWoCellElement;
     'wo-color-choose': HTMLWoColorChooseElement;
     'wo-count': HTMLWoCountElement;
+    'wo-main': HTMLWoMainElement;
     'wo-mode': HTMLWoModeElement;
     'wo-progress': HTMLWoProgressElement;
     'wo-switch': HTMLWoSwitchElement;
-    'wo-color-picker': HTMLWoColorPickerElement;
-    'wo-main': HTMLWoMainElement;
   }
 
 

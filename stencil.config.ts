@@ -1,7 +1,6 @@
 import { Config } from '@stencil/core';
 import { less } from '@stencil/less';
 import { postcss } from '@stencil/postcss';
-import * as autoprefixer from 'autoprefixer';
 
 export const config: Config = {
   namespace: 'wowo',
@@ -20,5 +19,7 @@ export const config: Config = {
   globalStyle: 'src/globals/variable.less',
   devServer: {
     openBrowser: false
-  }
+  },
+  autoprefixCss: true,
+  buildEs5: true
 };

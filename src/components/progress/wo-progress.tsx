@@ -29,6 +29,11 @@ export class ProgressControl {
   @Prop({ mutable: true, reflectToAttr: true }) value: number = this.min;
 
   /**
+   * 字颜色
+   */
+  @Prop() color: string = '';
+
+  /**
    * 是否显示百分比
    */
   @Prop({ mutable: true }) percent: boolean = true;
@@ -89,8 +94,10 @@ export class ProgressControl {
 
   // 初始化进度条宽度 和 左边空白条长度
   componentDidLoad() {
-    this.width = this.el.getBoundingClientRect().width;
-    this.leftWidth = this.el.shadowRoot.querySelector('.wo-progress--content').getBoundingClientRect().left - 7.5
+    // this.width = this.el.getBoundingClientRect().width;
+    let currentEl = this.el.shadowRoot.querySelector('.wo-progress--content').getBoundingClientRect()
+    this.width = currentEl.width;
+    this.leftWidth = currentEl.left
     // this.leftWidth = document.body.clientWidth * 0.25 + 25;
     if (this.percent) {
       this.percent = this.max === 100;
@@ -109,7 +116,7 @@ export class ProgressControl {
     return (
       <div class="wo-progress">
         <p class="wo-progress--content" onClick={e => this.clickMode(e)} style={{backgroundColor:this.inactiveColor}}>
-          <span class="wo-progress__value">
+          <span class="wo-progress__value" style={{color:this.color}}>
             {this.value} {this.percent ? "%" : ""}
           </span>
           <span
