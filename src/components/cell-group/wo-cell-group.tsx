@@ -10,7 +10,7 @@ export class CellGroup {
   /**
    * 是否显示顶线
    */
-  @Prop() topLine: boolean = true;
+  @Prop() topLine: boolean = false;
   /**
    * 是否显示底线
    */

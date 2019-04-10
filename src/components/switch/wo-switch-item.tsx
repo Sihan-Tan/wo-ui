@@ -5,7 +5,7 @@ import { Component, Event, EventEmitter, Prop } from "@stencil/core";
   styleUrl: "index.less",
   shadow: true
 })
-export class ModeControl {
+export class Switch {
   /*
    * 开关状态
    */

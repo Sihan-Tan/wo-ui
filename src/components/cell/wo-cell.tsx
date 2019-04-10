@@ -33,10 +33,6 @@ export class Cell {
   @Prop() topLine: boolean = false;
   @Prop() bottomLine: boolean = true;
 
-  componentWillLoad(){
-    console.log(this.isScroll)
-  }
-
   render() {
     return (
       <div class={`wo-cell ${!this.topLine?'wo-cell--no-top':''} ${!this.bottomLine?'wo-cell--no-bottom':''}`}>

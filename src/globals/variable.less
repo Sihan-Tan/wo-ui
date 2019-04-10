@@ -27,3 +27,28 @@ body {
   background-color: var(--color-grey);
   transform: scaleY(.5);
 }
+
+.select {
+  width: 120px;
+  height: 100%;
+  box-sizing: border-box;
+  line-height: 24px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  position: relative;
+  font-size: 14px;
+
+  &:after{
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 0;
+    height: 0;
+    transform: translateX(-50%);
+    border-style: solid;
+    border-width: 5px 5px 5px 5px;
+    border-color: #333 transparent transparent transparent;
+  }
+}

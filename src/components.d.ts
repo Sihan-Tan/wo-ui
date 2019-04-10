@@ -12,6 +12,45 @@ import '@stencil/core';
 
 export namespace Components {
 
+  interface WoActionSheet {
+    /**
+    * 列表数据
+    */
+    'actions': Array<any>;
+    /**
+    * 激活颜色
+    */
+    'activeColor': string;
+    'setAction': (index: any) => void;
+    /**
+    * 显示
+    */
+    'show': boolean;
+    /**
+    * 标题
+    */
+    'title': string;
+  }
+  interface WoActionSheetAttributes extends StencilHTMLAttributes {
+    /**
+    * 列表数据
+    */
+    'actions'?: Array<any>;
+    /**
+    * 激活颜色
+    */
+    'activeColor'?: string;
+    'onChange'?: (event: CustomEvent) => void;
+    /**
+    * 显示
+    */
+    'show'?: boolean;
+    /**
+    * 标题
+    */
+    'title'?: string;
+  }
+
   interface WoCellGroup {
     /**
     * 是否显示底线
@@ -350,6 +389,7 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'WoActionSheet': Components.WoActionSheet;
     'WoCellGroup': Components.WoCellGroup;
     'WoCell': Components.WoCell;
     'WoColorChoose': Components.WoColorChoose;
@@ -361,6 +401,7 @@ declare global {
   }
 
   interface StencilIntrinsicElements {
+    'wo-action-sheet': Components.WoActionSheetAttributes;
     'wo-cell-group': Components.WoCellGroupAttributes;
     'wo-cell': Components.WoCellAttributes;
     'wo-color-choose': Components.WoColorChooseAttributes;
@@ -371,6 +412,12 @@ declare global {
     'wo-switch': Components.WoSwitchAttributes;
   }
 
+
+  interface HTMLWoActionSheetElement extends Components.WoActionSheet, HTMLStencilElement {}
+  var HTMLWoActionSheetElement: {
+    prototype: HTMLWoActionSheetElement;
+    new (): HTMLWoActionSheetElement;
+  };
 
   interface HTMLWoCellGroupElement extends Components.WoCellGroup, HTMLStencilElement {}
   var HTMLWoCellGroupElement: {
@@ -421,6 +468,7 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'wo-action-sheet': HTMLWoActionSheetElement
     'wo-cell-group': HTMLWoCellGroupElement
     'wo-cell': HTMLWoCellElement
     'wo-color-choose': HTMLWoColorChooseElement
@@ -432,6 +480,7 @@ declare global {
   }
 
   interface ElementTagNameMap {
+    'wo-action-sheet': HTMLWoActionSheetElement;
     'wo-cell-group': HTMLWoCellGroupElement;
     'wo-cell': HTMLWoCellElement;
     'wo-color-choose': HTMLWoColorChooseElement;

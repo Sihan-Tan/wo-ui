@@ -1,8 +1,13 @@
 .wo-cell-group {
     position: relative;
     overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 45vh;
     width: 100%;
     box-sizing: border-box;
+    border-top: .5px solid var(--color-grey);
+    border-bottom: .5px solid var(--color-grey);
+
     &::-webkit-scrollbar {
         display: none;
     }
