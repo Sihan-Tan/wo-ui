@@ -16,9 +16,9 @@
 
 ## Events
 
-| Event     | Description | Type                |
-| --------- | ----------- | ------------------- |
-| `getOpen` | 获取设备开关状态    | `CustomEvent<void>` |
+| Event    | Description | Type                |
+| -------- | ----------- | ------------------- |
+| `change` | 获取设备开关状态    | `CustomEvent<void>` |
 
 
 ## Methods

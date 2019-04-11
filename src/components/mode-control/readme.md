@@ -9,28 +9,25 @@
 
 | Property           | Attribute           | Description | Type     | Default     |
 | ------------------ | ------------------- | ----------- | -------- | ----------- |
-| `activeBackground` | `active-background` |             | `string` | `undefined` |
-| `activeColor`      | `active-color`      |             | `string` | `undefined` |
-| `background`       | `background`        |             | `string` | `undefined` |
-| `color`            | `color`             |             | `string` | `undefined` |
-| `label`            | `label`             |             | `string` | `undefined` |
-| `labelColor`       | `label-color`       |             | `string` | `"#333"`    |
-| `labelSize`        | `label-size`        |             | `number` | `16`        |
-| `modeArr`          | --                  |             | `any[]`  | `[]`        |
+| `activeBackground` | `active-background` | 选中时的背景颜色    | `string` | `undefined` |
+| `activeColor`      | `active-color`      | 选中时的文字颜色    | `string` | `undefined` |
+| `background`       | `background`        | 未选中时的背景颜色   | `string` | `undefined` |
+| `color`            | `color`             | 未选中时的文字颜色   | `string` | `undefined` |
+| `modeArr`          | --                  | 模式数组        | `Mode[]` | `[]`        |
 
 
 ## Events
 
-| Event      | Description | Type                |
-| ---------- | ----------- | ------------------- |
-| `showMode` |             | `CustomEvent<void>` |
+| Event    | Description | Type                |
+| -------- | ----------- | ------------------- |
+| `change` | 对外提供当前模式数据  | `CustomEvent<void>` |
 
 
 ## Methods
 
 ### `setMode(item: any) => void`
 
-
+设置当前的模式
 
 #### Parameters
 

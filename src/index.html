@@ -29,17 +29,11 @@
     <wo-cell label="温度">
       <wo-count value="20" color="green" line-color="red"></wo-count>
     </wo-cell>
-    <wo-cell label="温度">
-      <wo-count value="20" color="green" line-color="red"></wo-count>
+    <wo-cell label="选择器">
+      <span id="show" class="select">未选择</span>
     </wo-cell>
-    <wo-cell label="温度">
-      <wo-count value="20" color="green" line-color="red"></wo-count>
-    </wo-cell>
-    <wo-cell label="温度">
-      <wo-count value="20" color="green" line-color="red"></wo-count>
-    </wo-cell>
-    <wo-cell label="倒计时">
-      <span id="show" class="select" bottom-line="false">未选择</span>
+    <wo-cell label="按钮展示" bottom-line="false">
+      <wo-button type="info" size="small" plain>草长莺飞二月天</wo-button>
     </wo-cell>
     
     <wo-action-sheet show="false"></wo-action-sheet>
@@ -151,14 +145,16 @@
       let data = e.detail
       showEle.innerText = data.current.name
       actions = e.detail.all
-
-      // 向父页面发送消息
-      postMessage({
-        cmd: 'show',
-        data: data
-      })
+      console.log(data)
     })
 
+    // 按钮
+    let buttonEle = document.querySelector('wo-button')
+    buttonEle.addEventListener('touched', e => {
+      console.log(e.detail)
+    })
+
+    // 向父页面发送消息
     function postMessage(data) {
       window.parent.postMessage(data, 'http://localhost:8080')
     }

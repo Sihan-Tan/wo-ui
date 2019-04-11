@@ -7,21 +7,18 @@
 
 ## Properties
 
-| Property      | Attribute      | Description | Type     | Default     |
-| ------------- | -------------- | ----------- | -------- | ----------- |
-| `activeColor` | `active-color` |             | `string` | `"#09f"`    |
-| `colorArr`    | --             |             | `any[]`  | `[]`        |
-| `label`       | `label`        |             | `string` | `undefined` |
-| `labelColor`  | `label-color`  |             | `string` | `"#333"`    |
-| `labelSize`   | `label-size`   |             | `number` | `16`        |
-| `size`        | `size`         |             | `string` | `"normal"`  |
+| Property      | Attribute      | Description | Type     | Default  |
+| ------------- | -------------- | ----------- | -------- | -------- |
+| `activeColor` | `active-color` |             | `string` | `"#09f"` |
+| `colorArr`    | --             |             | `any[]`  | `[]`     |
+| `size`        | `size`         |             | `string` | `"12px"` |
 
 
 ## Events
 
-| Event      | Description | Type                |
-| ---------- | ----------- | ------------------- |
-| `getColor` |             | `CustomEvent<void>` |
+| Event    | Description | Type                |
+| -------- | ----------- | ------------------- |
+| `change` |             | `CustomEvent<void>` |
 
 
 ## Methods

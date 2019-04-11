@@ -51,6 +51,55 @@ export namespace Components {
     'title'?: string;
   }
 
+  interface WoButton {
+    /**
+    * 是否禁用 默认值   false 可选值   true
+    */
+    'disabled': boolean;
+    /**
+    * 幽灵按钮 默认值  false 可选值   true
+    */
+    'plain': boolean;
+    /**
+    * 按钮形状 默认值   - 可选值   square  round
+    */
+    'shape': string;
+    /**
+    * 按钮尺寸 默认值   normal 可选值   small  large
+    */
+    'size': string;
+    /**
+    * 按钮类型 默认值 default 可选值 primary info danger warning
+    */
+    'type': string;
+  }
+  interface WoButtonAttributes extends StencilHTMLAttributes {
+    /**
+    * 是否禁用 默认值   false 可选值   true
+    */
+    'disabled'?: boolean;
+    /**
+    * 对外提供当前模式数据
+    */
+    'onTouched'?: (event: CustomEvent) => void;
+    /**
+    * 幽灵按钮 默认值  false 可选值   true
+    */
+    'plain'?: boolean;
+    /**
+    * 按钮形状 默认值   - 可选值   square  round
+    */
+    'shape'?: string;
+    /**
+    * 按钮尺寸 默认值   normal 可选值   small  large
+    */
+    'size'?: string;
+    /**
+    * 按钮类型 默认值 default 可选值 primary info danger warning
+    */
+    'type'?: string;
+  }
+
   interface WoCellGroup {
     /**
     * 是否显示底线
@@ -390,6 +439,7 @@ export namespace Components {
 declare global {
   interface StencilElementInterfaces {
     'WoActionSheet': Components.WoActionSheet;
+    'WoButton': Components.WoButton;
     'WoCellGroup': Components.WoCellGroup;
     'WoCell': Components.WoCell;
     'WoColorChoose': Components.WoColorChoose;
@@ -402,6 +452,7 @@ declare global {
 
   interface StencilIntrinsicElements {
     'wo-action-sheet': Components.WoActionSheetAttributes;
+    'wo-button': Components.WoButtonAttributes;
     'wo-cell-group': Components.WoCellGroupAttributes;
     'wo-cell': Components.WoCellAttributes;
     'wo-color-choose': Components.WoColorChooseAttributes;
@@ -417,6 +468,12 @@ declare global {
   var HTMLWoActionSheetElement: {
     prototype: HTMLWoActionSheetElement;
     new (): HTMLWoActionSheetElement;
+  };
+
+  interface HTMLWoButtonElement extends Components.WoButton, HTMLStencilElement {}
+  var HTMLWoButtonElement: {
+    prototype: HTMLWoButtonElement;
+    new (): HTMLWoButtonElement;
   };
 
   interface HTMLWoCellGroupElement extends Components.WoCellGroup, HTMLStencilElement {}
@@ -469,6 +526,7 @@ declare global {
 
   interface HTMLElementTagNameMap {
     'wo-action-sheet': HTMLWoActionSheetElement
+    'wo-button': HTMLWoButtonElement
     'wo-cell-group': HTMLWoCellGroupElement
     'wo-cell': HTMLWoCellElement
     'wo-color-choose': HTMLWoColorChooseElement
@@ -481,6 +539,7 @@ declare global {
 
   interface ElementTagNameMap {
     'wo-action-sheet': HTMLWoActionSheetElement;
+    'wo-button': HTMLWoButtonElement;
     'wo-cell-group': HTMLWoCellGroupElement;
     'wo-cell': HTMLWoCellElement;
     'wo-color-choose': HTMLWoColorChooseElement;
