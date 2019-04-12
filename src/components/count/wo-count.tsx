@@ -29,9 +29,9 @@ export class ModeControl {
   @Prop() lineColor: string = '';
 
   /**
-   * 最大输入长度
+   * 步长
    */
-  @Prop() length: number = 3;
+  @Prop() step: number = 1;
 
   /**
    * 输入框内文字颜色
@@ -54,7 +54,7 @@ export class ModeControl {
   @Method()
   decreaseValue() {
     if(this.deDisabled) return ;
-    this.value --
+    this.value -= this.step
     this.inDisabled = false
     if(this.value <= this.min) {
       this.value = this.min
@@ -69,7 +69,7 @@ export class ModeControl {
   @Method()
   increaseValue() {
     if(this.inDisabled) return ;
-    this.value ++
+    this.value += this.step
     this.deDisabled = false
     if(this.value >= this.max) {
       this.value = this.max
@@ -114,7 +114,7 @@ export class ModeControl {
   componentWillLoad() {
     this.value = this.value ? this.value : this.min
     this.value = this.value < this.min ? this.min : this.value 
-    this.value = this.value > this.max ? this.max : this.value 
+    this.value = this.value > this.max ? this.max : this.value
   }
 
   componentDidLoad() {
@@ -125,7 +125,7 @@ export class ModeControl {
     return (
       <div class="wo-count">
         <span class={`wo-count__decrease ${this.deDisabled?'disabled':''}`} onClick={()=>this.decreaseValue()}> - </span>
-        <input type="tel" class="wo-count__value" maxlength="length" style={{color:this.color}} onFocus={()=>{this.changeColor()}} value={this.value} onBlur={()=>this.changeValue()}/>
+        <input type="tel" class="wo-count__value" style={{color:this.color}} onFocus={()=>{this.changeColor()}} value={this.value} onBlur={()=>this.changeValue()}/>
         <span class={`wo-count__increase ${this.inDisabled?'disabled':''}`} onClick={()=>this.increaseValue()}> + </span>
       </div>
     );

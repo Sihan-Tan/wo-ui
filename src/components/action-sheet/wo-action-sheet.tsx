@@ -20,7 +20,7 @@ export class ActionSheet {
   /**
    * 列表数据
    */
-  @Prop({ mutable: true, reflectToAttr: true }) actions: Array<any> = []
+  @Prop({ mutable: true, reflectToAttr: true }) lists: Array<any> = []
 
   /**
    * 激活颜色
@@ -35,18 +35,18 @@ export class ActionSheet {
     this.change.emit({
       current: item,
       index: index,
-      all: this.actions
+      all: this.lists
     });
     this.show = false
   }
 
   @Method()
   setAction(index) {
-    this.actions = this.actions.map(it => {
+    this.lists = this.lists.map(it => {
       it.selected = false;
       return it;
     });
-    this.actions[index].selected = true
+    this.lists[index].selected = true
   }
 
   render() {
@@ -59,7 +59,7 @@ export class ActionSheet {
           <div class="wo-actionsheet__header wo-hairline--top-bottom" style={{ display: this.title ? 'block' : 'none' }}></div>
           <div class="wo-actionsheet__content">
             {
-              this.actions.map((item, index) => {
+              this.lists.map((item, index) => {
                 if (item.selected) {
                   return (
                     <p class="action-sheet-item active"

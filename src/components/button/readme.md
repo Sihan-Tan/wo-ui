@@ -18,9 +18,10 @@
 
 ## Events
 
-| Event     | Description | Type                |
-| --------- | ----------- | ------------------- |
-| `touched` | 对外提供当前模式数据  | `CustomEvent<void>` |
+| Event     | Description         | Type                |
+| --------- | ------------------- | ------------------- |
+| `clicked` | 对外提供 touchStart事件响应 | `CustomEvent<void>` |
+| `touched` | 对外提供 touchStart事件响应 | `CustomEvent<void>` |
 
 
 ----------------------------------------------

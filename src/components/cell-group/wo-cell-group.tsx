@@ -10,16 +10,18 @@ export class CellGroup {
   /**
    * 是否显示顶线
    */
-  @Prop() topLine: boolean = false;
+  @Prop() topLine: boolean = true;
   /**
    * 是否显示底线
    */
-  @Prop() bottomLine: boolean = false;
+  @Prop() bottomLine: boolean = true;
 
 
   render() {
     return (
-      <div class={`wo-cell-group ${!this.topLine?'wo-cell-group--no-top':''} ${!this.bottomLine?'wo-cell-group--no-bottom':''}`}>
+      <div 
+      class={`wo-cell-group`}
+      >
         <slot/>
       </div>
     );

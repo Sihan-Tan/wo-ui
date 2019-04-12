@@ -43,11 +43,24 @@ export class Button {
     @Prop() shape: string = '' // 形状
 
     /**
-    * 对外提供当前模式数据
+    * 对外提供 touchStart事件响应
     */
     @Event()
     touched: EventEmitter;
     touchHandler() {
+        if(this.disabled) return
+        this.touched.emit({
+            disabled: this.disabled,
+            touched: true
+        })
+    }
+
+    /**
+    * 对外提供 touchStart事件响应
+    */
+    @Event()
+    clicked: EventEmitter;
+    clickHandler() {
         if(this.disabled) return
         this.touched.emit({
             disabled: this.disabled,
@@ -65,6 +78,7 @@ export class Button {
                 wo-button--${this.disabled ? 'disabled': ''}
                 wo-button--${this.size}`}
                 onTouchStart={()=>this.touchHandler()}
+                onClick={()=>this.clickHandler()}
                 >
                 <span class="wo-button__text" >
                     <slot></slot>

@@ -24,6 +24,11 @@ export class ProgressControl {
   @Prop() min: number = 0;
 
   /**
+   * 是否置灰
+   */
+  @Prop() inactive: boolean = false;
+
+  /**
    * 传入的值
    */
   @Prop({ mutable: true, reflectToAttr: true }) value: number = this.min;
@@ -32,6 +37,11 @@ export class ProgressControl {
    * 字颜色
    */
   @Prop() color: string = '';
+
+  /**
+   * 圆颜色
+   */
+  @Prop() circleColor: string = '';
 
   /**
    * 是否显示百分比
@@ -62,6 +72,7 @@ export class ProgressControl {
   // 调整圆环位置
   @Method()
   getCirclePos(e) {
+    if(this.inactive) return
     let l = e.touches[0].clientX - this.leftWidth - 3;
     this.calculateValue(l);
   }
@@ -69,15 +80,17 @@ export class ProgressControl {
   // 圆环移动结束
   @Method()
   touchEventEnd() {
+    if(this.inactive) return
     this.change.emit(this.value);
   }
 
   // 点击进度条
   @Method()
   clickMode(e) {
+    if(this.inactive) return
     let l = e.x - this.leftWidth;
     this.calculateValue(l);
-    this.change.emit(this.value);
+    this.change.emit({ value: this.value});
   }
 
   // 计算值和百分比
@@ -114,7 +127,7 @@ export class ProgressControl {
 
   render() {
     return (
-      <div class="wo-progress">
+      <div class="wo-progress" style={{filter: `grayscale(${this.inactive?1:0})`}} >
         <p class="wo-progress--content" onClick={e => this.clickMode(e)} style={{backgroundColor:this.inactiveColor}}>
           <span class="wo-progress__value" style={{color:this.color}}>
             {this.value} {this.percent ? "%" : ""}
@@ -122,13 +135,16 @@ export class ProgressControl {
           <span
             class="wo-progress__circle"
             onTouchStart={e => this.getCirclePos(e)}
-            style={{ left: (this.value / this.max) * 100 + "%" }}
+            style={{ 
+              left: (this.value / this.max) * 100 + "%",
+              backgroundColor: this.circleColor ? this.circleColor : this.color
+            }}
             onTouchMove={e => this.getCirclePos(e)}
             onTouchEnd={() => this.touchEventEnd()}
           />
           <span
             class="wo-progress__mode"
-            style={{ width: (this.value / this.max) * 100 + "%", backgroundColor: this.activeColor }}
+            style={{ width: (this.value / this.max) * 100 + "%", background: this.activeColor }}
           />
         </p>
       </div>

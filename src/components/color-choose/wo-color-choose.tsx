@@ -16,7 +16,7 @@ export class ColorControl {
   @Prop() size: string = "12px";
 
   @Prop({ mutable: true, reflectToAttr: true })
-  colorArr: Array<any> = [];
+  lists: Array<any> = [];
 
   @Event()
   change: EventEmitter;
@@ -26,13 +26,13 @@ export class ColorControl {
     this.change.emit({
       current: item,
       index: index,
-      all: this.colorArr
+      all: this.lists
     });
   }
 
   @Method()
   setColor(item) {
-    this.colorArr = this.colorArr.map(it => {
+    this.lists = this.lists.map(it => {
       it.selected = false;
       return it;
     });
@@ -42,14 +42,14 @@ export class ColorControl {
   // 对数据校验和初始化
   componentWillLoad() {
     let count = 0;
-    this.colorArr.forEach(item => {
+    this.lists.forEach(item => {
       count = item.selected ? count + 1 : count;
     });
     if (!count) {
-      this.colorArr[0].selected = true;
+      this.lists[0].selected = true;
     }
     if (count > 1) {
-      throw `'colorArr' 的成员最多只能有一个 selected 为 true`;
+      throw `'lists' 的成员最多只能有一个 selected 为 true`;
     }
 
   }
@@ -57,7 +57,7 @@ export class ColorControl {
   render() {
     return (
           <div class="wo-color">
-            {this.colorArr.map((item, index) => {
+            {this.lists.map((item, index) => {
               if (item.selected) {
                 return (
                   <span

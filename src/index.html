@@ -18,7 +18,7 @@
         <wo-mode></wo-mode>
     </wo-cell>
     <wo-cell label="亮度调节">
-        <wo-progress max="100" min="12" percent="false" value="15"></wo-progress>
+        <wo-progress max="100" min="12" percent="false" inactive="true" active-color="linear-gradient(to right, #be99ff, #7232dd)" value="15"></wo-progress>
     </wo-cell>
     <wo-cell label="颜色选择" is-scroll="true">
         <wo-color-choose size="10px"></wo-color-choose>
@@ -27,7 +27,7 @@
         <wo-switch size="14px" active-color="green" inactive-color="red"></wo-switch>
     </wo-cell>
     <wo-cell label="温度">
-      <wo-count value="20" color="green" line-color="red"></wo-count>
+      <wo-count value="20" line-color="red"></wo-count>
     </wo-cell>
     <wo-cell label="选择器">
       <span id="show" class="select">未选择</span>
@@ -55,7 +55,7 @@
     // 模式选择
     let modeEle = document.querySelector('wo-mode');
     setProps({
-      modeArr: [{
+      lists: [{
         name: '环保',
         selected: true
       }, {
@@ -88,7 +88,7 @@
     // 颜色选择
     let colorEle = document.querySelector('wo-color-choose');
     setProps({
-      colorArr: [{
+      lists: [{
         name: '黄色',
         color: 'yellow',
         selected: true
@@ -138,7 +138,7 @@
     showEle.onclick = function(){
       setProps({
         show: true,
-        actions: actions
+        lists: actions
       }, actionEle)
     }
     actionEle.addEventListener('change',e => {

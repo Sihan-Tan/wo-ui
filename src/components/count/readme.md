@@ -10,10 +10,10 @@
 | Property    | Attribute    | Description | Type     | Default     |
 | ----------- | ------------ | ----------- | -------- | ----------- |
 | `color`     | `color`      | 输入框内文字颜色    | `string` | `''`        |
-| `length`    | `length`     | 最大输入长度      | `number` | `3`         |
 | `lineColor` | `line-color` | 底线颜色        | `string` | `''`        |
 | `max`       | `max`        | 最大值         | `number` | `100`       |
 | `min`       | `min`        | 最小值         | `number` | `0`         |
+| `step`      | `step`       | 步长          | `number` | `1`         |
 | `value`     | `value`      | 默认值         | `number` | `undefined` |
 
 

@@ -10,7 +10,9 @@
 | Property        | Attribute        | Description | Type      | Default     |
 | --------------- | ---------------- | ----------- | --------- | ----------- |
 | `activeColor`   | `active-color`   | 进度条激活状态颜色   | `string`  | `undefined` |
+| `circleColor`   | `circle-color`   | 圆颜色         | `string`  | `''`        |
 | `color`         | `color`          | 字颜色         | `string`  | `''`        |
+| `inactive`      | `inactive`       | 是否置灰        | `boolean` | `false`     |
 | `inactiveColor` | `inactive-color` | 进度条默认状态颜色   | `string`  | `undefined` |
 | `max`           | `max`            | 最大值         | `number`  | `100`       |
 | `min`           | `min`            | 最小值         | `number`  | `0`         |

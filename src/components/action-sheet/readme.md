@@ -9,8 +9,8 @@
 
 | Property      | Attribute      | Description | Type      | Default |
 | ------------- | -------------- | ----------- | --------- | ------- |
-| `actions`     | --             | 列表数据        | `any[]`   | `[]`    |
 | `activeColor` | `active-color` | 激活颜色        | `string`  | `''`    |
+| `lists`       | --             | 列表数据        | `any[]`   | `[]`    |
 | `show`        | `show`         | 显示          | `boolean` | `false` |
 | `title`       | `title`        | 标题          | `string`  | `''`    |
 

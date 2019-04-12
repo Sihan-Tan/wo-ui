@@ -10,7 +10,7 @@
 | Property      | Attribute      | Description | Type     | Default  |
 | ------------- | -------------- | ----------- | -------- | -------- |
 | `activeColor` | `active-color` |             | `string` | `"#09f"` |
-| `colorArr`    | --             |             | `any[]`  | `[]`     |
+| `lists`       | --             |             | `any[]`  | `[]`     |
 | `size`        | `size`         |             | `string` | `"12px"` |
 
 

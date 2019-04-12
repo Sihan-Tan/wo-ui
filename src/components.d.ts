@@ -14,13 +14,13 @@ export namespace Components {
 
   interface WoActionSheet {
     /**
-    * 列表数据
-    */
-    'actions': Array<any>;
-    /**
     * 激活颜色
     */
     'activeColor': string;
+    /**
+    * 列表数据
+    */
+    'lists': Array<any>;
     'setAction': (index: any) => void;
     /**
     * 显示
@@ -33,13 +33,13 @@ export namespace Components {
   }
   interface WoActionSheetAttributes extends StencilHTMLAttributes {
     /**
-    * 列表数据
-    */
-    'actions'?: Array<any>;
-    /**
     * 激活颜色
     */
     'activeColor'?: string;
+    /**
+    * 列表数据
+    */
+    'lists'?: Array<any>;
     'onChange'?: (event: CustomEvent) => void;
     /**
     * 显示
@@ -79,7 +79,11 @@ export namespace Components {
     */
     'disabled'?: boolean;
     /**
-    * 对外提供当前模式数据
+    * 对外提供 touchStart事件响应
+    */
+    'onClicked'?: (event: CustomEvent) => void;
+    /**
+    * 对外提供 touchStart事件响应
     */
     'onTouched'?: (event: CustomEvent) => void;
     /**
@@ -158,13 +162,13 @@ export namespace Components {
 
   interface WoColorChoose {
     'activeColor': string | null;
-    'colorArr': Array<any>;
+    'lists': Array<any>;
     'setColor': (item: any) => void;
     'size': string;
   }
   interface WoColorChooseAttributes extends StencilHTMLAttributes {
     'activeColor'?: string | null;
-    'colorArr'?: Array<any>;
+    'lists'?: Array<any>;
     'onChange'?: (event: CustomEvent) => void;
     'size'?: string;
   }
@@ -191,10 +195,6 @@ export namespace Components {
     */
     'increaseValue': () => void;
     /**
-    * 最大输入长度
-    */
-    'length': number;
-    /**
     * 底线颜色
     */
     'lineColor': string;
@@ -207,6 +207,10 @@ export namespace Components {
     */
     'min': number;
     /**
+    * 步长
+    */
+    'step': number;
+    /**
     * 默认值
     */
     'value': number;
@@ -216,10 +220,6 @@ export namespace Components {
     * 输入框内文字颜色
     */
     'color'?: string;
-    /**
-    * 最大输入长度
-    */
-    'length'?: number;
     /**
     * 底线颜色
     */
@@ -236,6 +236,10 @@ export namespace Components {
     * 对外提供当前模式数据
     */
     'onChange'?: (event: CustomEvent) => void;
+    /**
+    * 步长
+    */
+    'step'?: number;
     /**
     * 默认值
     */
@@ -283,23 +287,23 @@ export namespace Components {
     /**
     * 选中时的背景颜色
     */
-    'activeBackground': string | null;
+    'activeBackground': string;
     /**
     * 选中时的文字颜色
     */
-    'activeColor': string | null;
+    'activeColor': string;
     /**
     * 未选中时的背景颜色
     */
-    'background': string | null;
+    'background': string;
     /**
     * 未选中时的文字颜色
     */
-    'color': string | null;
+    'color': string;
     /**
     * 模式数组
     */
-    'modeArr': Array<Mode>;
+    'lists': Array<Mode>;
     /**
     * 设置当前的模式
     */
@@ -309,23 +313,23 @@ export namespace Components {
     /**
     * 选中时的背景颜色
     */
-    'activeBackground'?: string | null;
+    'activeBackground'?: string;
     /**
     * 选中时的文字颜色
     */
-    'activeColor'?: string | null;
+    'activeColor'?: string;
     /**
     * 未选中时的背景颜色
     */
-    'background'?: string | null;
+    'background'?: string;
     /**
     * 未选中时的文字颜色
     */
-    'color'?: string | null;
+    'color'?: string;
     /**
     * 模式数组
     */
-    'modeArr'?: Array<Mode>;
+    'lists'?: Array<Mode>;
     /**
     * 对外提供当前模式数据
     */
@@ -338,12 +342,20 @@ export namespace Components {
     */
     'activeColor': string;
     'calculateValue': (left: any) => void;
+    /**
+    * 圆颜色
+    */
+    'circleColor': string;
     'clickMode': (e: any) => void;
     /**
     * 字颜色
     */
     'color': string;
     'getCirclePos': (e: any) => void;
+    /**
+    * 是否置灰
+    */
+    'inactive': boolean;
     /**
     * 进度条默认状态颜色
     */
@@ -372,9 +384,17 @@ export namespace Components {
     */
     'activeColor'?: string;
     /**
+    * 圆颜色
+    */
+    'circleColor'?: string;
+    /**
     * 字颜色
     */
     'color'?: string;
+    /**
+    * 是否置灰
+    */
+    'inactive'?: boolean;
     /**
     * 进度条默认状态颜色
     */
