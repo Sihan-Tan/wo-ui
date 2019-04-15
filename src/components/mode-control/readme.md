@@ -7,13 +7,14 @@
 
 ## Properties
 
-| Property           | Attribute           | Description | Type     | Default |
-| ------------------ | ------------------- | ----------- | -------- | ------- |
-| `activeBackground` | `active-background` | 选中时的背景颜色    | `string` | `''`    |
-| `activeColor`      | `active-color`      | 选中时的文字颜色    | `string` | `''`    |
-| `background`       | `background`        | 未选中时的背景颜色   | `string` | `''`    |
-| `color`            | `color`             | 未选中时的文字颜色   | `string` | `''`    |
-| `lists`            | --                  | 模式数组        | `Mode[]` | `[]`    |
+| Property           | Attribute           | Description | Type      | Default |
+| ------------------ | ------------------- | ----------- | --------- | ------- |
+| `activeBackground` | `active-background` | 选中时的背景颜色    | `string`  | `''`    |
+| `activeColor`      | `active-color`      | 选中时的文字颜色    | `string`  | `''`    |
+| `background`       | `background`        | 未选中时的背景颜色   | `string`  | `''`    |
+| `color`            | `color`             | 未选中时的文字颜色   | `string`  | `''`    |
+| `lists`            | --                  | 模式数组        | `Mode[]`  | `[]`    |
+| `multiple`         | `multiple`          | 是否支持多选项     | `boolean` | `false` |
 
 
 ## Events

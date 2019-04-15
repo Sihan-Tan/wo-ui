@@ -132,7 +132,7 @@ export class ProgressControl {
           <span class="wo-progress__value" style={{color:this.color}}>
             {this.value} {this.percent ? "%" : ""}
           </span>
-          <span
+          <span 
             class="wo-progress__circle"
             onTouchStart={e => this.getCirclePos(e)}
             style={{ 

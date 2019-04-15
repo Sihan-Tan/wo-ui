@@ -39,12 +39,16 @@ export class ModeControl {
   lists: Array<Mode> = [];
 
   /**
+   * 是否支持多选项
+   */
+  @Prop() multiple: boolean = false
+
+  /**
    *对外提供当前模式数据
    */
   @Event()
   change: EventEmitter;
   showModeHandler(item, index) {
-    if (item.selected) return;
     this.setMode(item);
     this.change.emit({
       current: item,
@@ -59,23 +63,34 @@ export class ModeControl {
    */
   @Method()
   setMode(item) {
-    this.lists = this.lists.map(it => {
-      it.selected = false;
-      return it;
-    });
-    item.selected = true;
+    if(this.multiple) {
+      item.selected = !item.selected
+      this.lists = [...this.lists]
+    } else {
+      if (item.selected) return;
+      this.lists = this.lists.map(it => {
+        it.selected = false;
+        return it;
+      });
+      item.selected = true;
+    }
   }
 
   /**
    * 数据校验
    */
   componentWillLoad() {
-    let count = 0;
-    this.lists.forEach(item => {
-      count = item.selected ? count + 1 : count;
-    });
-    if (count > 1) {
-      throw `'lists' 的成员最多只能有一个 selected 为 true`;
+    let count = 0
+    this.lists.forEach(item=>{
+      count += item.selected ? 1 : 0
+    })
+    if(count > 1 && !this.multiple ) {
+      console.log(count, !this.multiple)
+      this.lists = this.lists.map(item=>{
+        item.selected = false
+        return item
+      })
+      throw new Error('如果您需要支持多选,请设置 multiple 属性');
     }
   }
 
@@ -86,6 +101,7 @@ export class ModeControl {
           if (item.selected) {
             return (<span
               class='wo-mode__item active'
+              onClick={() => this.showModeHandler(item, index)}
               style={{ 'color': this.activeColor, 'background-color': this.activeBackground }}
             >
               {item.name}

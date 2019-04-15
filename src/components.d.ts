@@ -21,15 +21,19 @@ export namespace Components {
     * 列表数据
     */
     'lists': Array<any>;
-    'setAction': (index: any) => void;
     /**
-    * 显示
+    * 是否支持点击遮罩层关闭当前actionsheet
     */
-    'show': boolean;
+    'overlay': boolean;
+    'setAction': (index: any) => void;
     /**
     * 标题
     */
     'title': string;
+    /**
+    * 标题字体大小
+    */
+    'titleSize': string;
   }
   interface WoActionSheetAttributes extends StencilHTMLAttributes {
     /**
@@ -42,16 +46,32 @@ export namespace Components {
     'lists'?: Array<any>;
     'onChange'?: (event: CustomEvent) => void;
     /**
-    * 显示
+    * 是否支持点击遮罩层关闭当前actionsheet
     */
-    'show'?: boolean;
+    'overlay'?: boolean;
     /**
     * 标题
     */
     'title'?: string;
+    /**
+    * 标题字体大小
+    */
+    'titleSize'?: string;
   }
 
   interface WoButton {
+    /**
+    * 自定义背景颜色
+    */
+    'background': string;
+    /**
+    * 自定义边框颜色
+    */
+    'borderColor': string;
+    /**
+    * 自定义文字颜色
+    */
+    'color': string;
     /**
     * 是否禁用 默认值   false 可选值   true
     */
@@ -74,6 +94,18 @@ export namespace Components {
     'type': string;
   }
   interface WoButtonAttributes extends StencilHTMLAttributes {
+    /**
+    * 自定义背景颜色
+    */
+    'background'?: string;
+    /**
+    * 自定义边框颜色
+    */
+    'borderColor'?: string;
+    /**
+    * 自定义文字颜色
+    */
+    'color'?: string;
     /**
     * 是否禁用 默认值   false 可选值   true
     */
@@ -161,15 +193,27 @@ export namespace Components {
   }
 
   interface WoColorChoose {
-    'activeColor': string | null;
+    /**
+    * 激活项颜色
+    */
+    'activeColor': string;
     'lists': Array<any>;
     'setColor': (item: any) => void;
+    /**
+    * 大小
+    */
     'size': string;
   }
   interface WoColorChooseAttributes extends StencilHTMLAttributes {
-    'activeColor'?: string | null;
+    /**
+    * 激活项颜色
+    */
+    'activeColor'?: string;
     'lists'?: Array<any>;
     'onChange'?: (event: CustomEvent) => void;
+    /**
+    * 大小
+    */
     'size'?: string;
   }
 
@@ -305,6 +349,10 @@ export namespace Components {
     */
     'lists': Array<Mode>;
     /**
+    * 是否支持多选项
+    */
+    'multiple': boolean;
+    /**
     * 设置当前的模式
     */
     'setMode': (item: any) => void;
@@ -330,6 +378,10 @@ export namespace Components {
     * 模式数组
     */
     'lists'?: Array<Mode>;
+    /**
+    * 是否支持多选项
+    */
+    'multiple'?: boolean;
     /**
     * 对外提供当前模式数据
     */
@@ -430,6 +482,14 @@ export namespace Components {
     */
     'inactiveColor': string;
     /**
+    * 是否处于loading状态
+    */
+    'loading': boolean;
+    /**
+    * loading 时的背景颜色
+    */
+    'loadingColor': string;
+    /**
     * 开关大小
     */
     'size': string;
@@ -445,6 +505,14 @@ export namespace Components {
     * 关闭时的背景色
     */
     'inactiveColor'?: string;
+    /**
+    * 是否处于loading状态
+    */
+    'loading'?: boolean;
+    /**
+    * loading 时的背景颜色
+    */
+    'loadingColor'?: string;
     /**
     * 对外提供当前模式数据
     */

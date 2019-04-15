@@ -7,12 +7,13 @@
 
 ## Properties
 
-| Property      | Attribute      | Description | Type      | Default |
-| ------------- | -------------- | ----------- | --------- | ------- |
-| `activeColor` | `active-color` | 激活颜色        | `string`  | `''`    |
-| `lists`       | --             | 列表数据        | `any[]`   | `[]`    |
-| `show`        | `show`         | 显示          | `boolean` | `false` |
-| `title`       | `title`        | 标题          | `string`  | `''`    |
+| Property      | Attribute      | Description              | Type      | Default |
+| ------------- | -------------- | ------------------------ | --------- | ------- |
+| `activeColor` | `active-color` | 激活颜色                     | `string`  | `''`    |
+| `lists`       | --             | 列表数据                     | `any[]`   | `[]`    |
+| `overlay`     | `overlay`      | 是否支持点击遮罩层关闭当前actionsheet | `boolean` | `true`  |
+| `title`       | `title`        | 标题                       | `string`  | `''`    |
+| `titleSize`   | `title-size`   | 标题字体大小                   | `string`  | `''`    |
 
 
 ## Events

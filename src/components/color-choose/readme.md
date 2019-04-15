@@ -9,9 +9,9 @@
 
 | Property      | Attribute      | Description | Type     | Default  |
 | ------------- | -------------- | ----------- | -------- | -------- |
-| `activeColor` | `active-color` |             | `string` | `"#09f"` |
+| `activeColor` | `active-color` | 激活项颜色       | `string` | `"#09f"` |
 | `lists`       | --             |             | `any[]`  | `[]`     |
-| `size`        | `size`         |             | `string` | `"12px"` |
+| `size`        | `size`         | 大小          | `string` | `"12px"` |
 
 
 ## Events

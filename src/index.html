@@ -5,6 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
   <title>Stencil Component Starter</title>
+  <!-- <link rel="stylesheet" href="http://tobefree.top/wowo/wowo.css"> -->
+  <!-- <script src="http://tobefree.top/wowo/wowo.js"></script> -->
   <link rel="stylesheet" href="/build/wowo.css">
   <script src="/build/wowo.js"></script>
 </head>
@@ -15,28 +17,30 @@
   </wo-main>
   <wo-cell-group>
     <wo-cell label="工作模式" is-scroll>
-        <wo-mode></wo-mode>
+      <wo-mode></wo-mode>
     </wo-cell>
     <wo-cell label="亮度调节">
-        <wo-progress max="100" min="12" percent="false" inactive="true" active-color="linear-gradient(to right, #be99ff, #7232dd)" value="15"></wo-progress>
+      <wo-progress max="100" min="12"
+        active-color="linear-gradient(to right, #be99ff, #7232dd)" value="15"></wo-progress>
     </wo-cell>
     <wo-cell label="颜色选择" is-scroll="true">
-        <wo-color-choose size="10px"></wo-color-choose>
+      <wo-color-choose size="10px"></wo-color-choose>
     </wo-cell>
     <wo-cell label="开关">
-        <wo-switch size="14px" active-color="green" inactive-color="red"></wo-switch>
+      <wo-switch size="20px" active-color="green" inactive-color="red" loading></wo-switch>
     </wo-cell>
     <wo-cell label="温度">
       <wo-count value="20" line-color="red"></wo-count>
     </wo-cell>
     <wo-cell label="选择器">
-      <span id="show" class="select">未选择</span>
+      <!-- <span id="show" class="select">未选择</span> -->
+      <wo-action-sheet></wo-action-sheet>
     </wo-cell>
     <wo-cell label="按钮展示" bottom-line="false">
       <wo-button type="info" size="small" plain>草长莺飞二月天</wo-button>
     </wo-cell>
-    
-    <wo-action-sheet show="false"></wo-action-sheet>
+
+    <!-- <wo-action-sheet show="false"></wo-action-sheet> -->
   </wo-cell-group>
 
   <script>
@@ -58,12 +62,6 @@
       lists: [{
         name: '环保',
         selected: true
-      }, {
-        name: '节能',
-        selected: false
-      }, {
-        name: '节能',
-        selected: false
       }, {
         name: '节能',
         selected: false
@@ -112,7 +110,7 @@
 
     // 开关
     let switchEle = document.querySelector('wo-switch');
-    switchEle.addEventListener('change', e=>{
+    switchEle.addEventListener('change', e => {
       console.log(e.detail)
     })
 
@@ -123,28 +121,43 @@
     })
 
     // 倒计时
-    let showEle = document.querySelector('#show')
     let actionEle = document.querySelector('wo-action-sheet')
     let actions = [
-          {
-            name: '一小时',
-            selected: true
-          },
-          {
-            name: '二小时',
-            selected: false
-          }
-        ]
-    showEle.onclick = function(){
-      setProps({
-        show: true,
-        lists: actions
-      }, actionEle)
-    }
-    actionEle.addEventListener('change',e => {
+      {
+        name: '1小时',
+        selected: true
+      },
+      {
+        name: '2小时',
+        selected: false
+      },
+      {
+        name: '3小时',
+        selected: false
+      },
+      {
+        name: '4小时',
+        selected: false
+      },
+      {
+        name: '5小时',
+        selected: false
+      },
+      {
+        name: '6小时',
+        selected: false
+      },
+      {
+        name: '7小时',
+        selected: false
+      }
+    ]
+    setProps({
+      lists: actions,
+      title: '123'
+    }, actionEle)
+    actionEle.addEventListener('change', e => {
       let data = e.detail
-      showEle.innerText = data.current.name
-      actions = e.detail.all
       console.log(data)
     })
 
@@ -160,9 +173,8 @@
     }
 
     // 接收信息
-    window.addEventListener('message', function(e){
+    window.addEventListener('message', function (e) {
       let data = e.data
-      console.log(data)
     })
 
   </script>

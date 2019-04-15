@@ -12,7 +12,7 @@
 }
 
 .wo-switch--disabled {
-    opacity: 0.4;
+  opacity: 0.4;
 }
 
 .wo-switch__node {
@@ -33,5 +33,29 @@
 
   .wo-switch__node {
     transform: translateX(1em);
+  }
+}
+
+.wo-switch--loading {
+  .wo-switch__node {
+    left: unset;
+    right: 0;
+    transform-origin: center;
+    transform: translateX(1em);
+    animation: loading 1s ease infinite;
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: scale(0.3);
+  }
+
+  90% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(0.3);
   }
 }

@@ -12,7 +12,14 @@ import {
   shadow: true
 })
 export class ColorControl {
-  @Prop() activeColor: string | null = "#09f";
+  /**
+   * 激活项颜色
+   */
+  @Prop() activeColor: string = "#09f";
+
+  /**
+   * 大小
+   */
   @Prop() size: string = "12px";
 
   @Prop({ mutable: true, reflectToAttr: true })
