@@ -81,7 +81,7 @@ export class ProgressControl {
   @Method()
   touchEventEnd() {
     if(this.inactive) return
-    this.change.emit(this.value);
+    this.change.emit({ value: this.value});
   }
 
   // 点击进度条
