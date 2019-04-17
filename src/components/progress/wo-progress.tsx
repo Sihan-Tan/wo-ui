@@ -60,6 +60,7 @@ export class ProgressControl {
 
   private width: number;
   private leftWidth: number;
+  // private timeout: any;
 
   // 获取组件元素
   @Element()
@@ -72,7 +73,15 @@ export class ProgressControl {
   // 调整圆环位置
   @Method()
   getCirclePos(e) {
-    if(this.inactive) return
+    // let _this = this
+    // if(_this.inactive) return
+    // clearTimeout(_this.timeout);
+    // let l = e.touches[0].clientX - _this.leftWidth - 3;
+    // _this.timeout = setTimeout(function () {
+    //   _this.calculateValue(l);
+    // }, 50);  
+
+    if(this.inactive) return ;
     let l = e.touches[0].clientX - this.leftWidth - 3;
     this.calculateValue(l);
   }
@@ -115,7 +124,6 @@ export class ProgressControl {
     if (this.percent) {
       this.percent = this.max === 100;
     }
-    // console.log((this.el.shadowRoot.querySelector('.wo-progress--content').getBoundingClientRect().left))
   }
 
   // 数据校验
